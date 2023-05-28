@@ -5,5 +5,4 @@ public class TwoParaGenericClass {
         TwoParaGenz<Integer, Integer> obj = new TwoParaGenz<>(10, 20);
         System.out.println(obj.getVal2());
     }
-
 }
