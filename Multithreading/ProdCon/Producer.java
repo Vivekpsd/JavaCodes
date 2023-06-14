@@ -1,16 +1,17 @@
 package ProdCon;
 
-public class Producer extends Thread {
+public class Producer extends Thread{
     Company c;
+
     public Producer(Company c) {
         this.c = c;
     }
 
     public void run() {
         int i = 1;
-        while(true) {
-            this.c.produce_item(i);
+        while(true) {  
             try {
+                this.c.produce_item(i);
                 Thread.sleep(1000);
             } catch (Exception e) {
                 System.out.println(e);

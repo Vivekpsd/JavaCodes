@@ -2,31 +2,23 @@ package ProdCon;
 
 public class Company {
     public int n;
-    boolean flag = false; // false -> producer's turn
+    boolean flag = false; // false -> producer, true -> consumer
 
-    synchronized public void produce_item(int n) {
+    synchronized public void produce_item(int n) throws Exception {
         if (flag) {
-            try {
-                wait();
-            } catch (Exception e) {
-                System.out.println(e);
-            }
+            wait();
         }
         this.n = n;
-        System.out.println("Produced : " + this.n);
+        System.out.println("Produced: " + this.n);
         flag = true;
         notify();
     }
 
-    synchronized public int consume_item() {
+    synchronized public int consume_item() throws Exception {
         if (!flag) {
-            try {
-                wait();
-            } catch (Exception e) {
-                System.out.println(e);
-            }
+            wait();
         }
-        System.out.println("Consumed : " + this.n);
+        System.out.println("Consumed: " + this.n);
         flag = false;
         notify();
         return this.n;
