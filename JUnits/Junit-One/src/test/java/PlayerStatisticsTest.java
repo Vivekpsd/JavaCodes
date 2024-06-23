@@ -1,11 +1,22 @@
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class PlayerStatisticsTest {
+
+    private Player p1;
+    private PlayerStatistics statistics;
+
+    @Before
+    public void setup() {
+        p1 = new Player("Vivek", 27);
+        statistics = new PlayerStatistics(p1, 3, 3);
+    }
+
     @Test
     public void PlayerNameEqual() {
-        Player p1 = new Player("Vivek", 24);
+        System.out.println("Test 1");
         Player p2 = new Player("Vivek", 26);
 
         assertEquals(p1, p2);
@@ -13,15 +24,15 @@ public class PlayerStatisticsTest {
 
     @Test
     public void PlayerNameNotEqual() {
-        Player p1 = new Player("Vivekk", 24);
-        Player p2 = new Player("Vivek", 26);
+        System.out.println("Test 2");
+        Player p2 = new Player("Vivekk", 26);
 
         assertNotEquals(p1, p2);
     }
 
     @Test
     public void youngerPlayerSame() {
-        Player p1 = new Player("Vivek", 24);
+        System.out.println("Test 3");
         Player p2 = new Player("Vivek", 26);
 
         assertSame(p1, PlayerStatistics.getYoungerPlayer(p1, p2));
@@ -30,38 +41,36 @@ public class PlayerStatisticsTest {
 
     @Test
     public void underThirtyTrue() {
-        Player p1 = new Player("Vivek", 27);
-        PlayerStatistics statistics = new PlayerStatistics(p1, 3, 3);
+        System.out.println("Test 4");
         assertTrue(statistics.underThirty());
     }
 
     @Test
     public void underThirtyFalse() {
-        Player p1 = new Player("Vivek", 31);
-        PlayerStatistics statistics = new PlayerStatistics(p1, 3, 3);
+        System.out.println("Test 5");
+        Player p2 = new Player("Vivek", 31);
         assertFalse(statistics.underThirty());
         assertEquals(false, statistics.underThirty());
     }
 
     @Test
     public void csvRecordNull() {
-        Player p1 = new Player("Vivek", 23);
-        PlayerStatistics statistics = new PlayerStatistics(p1, 0, 0);
-        assertNull(statistics.createCsvRecord());
+        System.out.println("Test 6");
+        PlayerStatistics stats = new PlayerStatistics(p1, 0, 0);
+        assertNull(stats.createCsvRecord());
     }
 
     @Test
     public void csvRecordNotNull() {
-        Player p1 = new Player("Vivek", 23);
-        PlayerStatistics statistics = new PlayerStatistics(p1, 3, 2);
+        System.out.println("Test 7");
         assertNotNull(statistics.createCsvRecord());
     }
 
     @Test
     public void getCsvStatsRecord() {
-        Player p1 = new Player("Vivek", 21);
-        PlayerStatistics statistics = new PlayerStatistics(p1, 4, 8);
+        System.out.println("Test 8");
+        PlayerStatistics stats = new PlayerStatistics(p1, 4, 8);
         Double[] expectedArray = {2d, 0.5};
-        assertArrayEquals(expectedArray, statistics.createCsvRecord());
+        assertArrayEquals(expectedArray, stats.createCsvRecord());
     }
 }
