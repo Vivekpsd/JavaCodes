@@ -33,7 +33,7 @@ public class PlayerStatisticsTest {
     @Test
     public void youngerPlayerSame() {
         System.out.println("Test 3");
-        Player p2 = new Player("Vivek", 26);
+        Player p2 = new Player("Vivek", 27);
 
         assertSame(p1, PlayerStatistics.getYoungerPlayer(p1, p2));
         // assertSame will actually compare the memory location not just values
@@ -49,8 +49,9 @@ public class PlayerStatisticsTest {
     public void underThirtyFalse() {
         System.out.println("Test 5");
         Player p2 = new Player("Vivek", 31);
-        assertFalse(statistics.underThirty());
-        assertEquals(false, statistics.underThirty());
+        PlayerStatistics stats = new PlayerStatistics(p2, 3, 3);
+        assertFalse(stats.underThirty());
+        assertEquals(false, stats.underThirty());
     }
 
     @Test

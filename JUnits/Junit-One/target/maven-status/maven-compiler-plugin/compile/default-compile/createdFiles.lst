@@ -1,2 +1,7 @@
-PlayerStatistics.class
+Cashier.class
+BookingManager.class
+HotelDao.class
 Player.class
+InvalidTransactionAmountException.class
+PlayerStatistics.class
+StudentScoreCalculator.class
